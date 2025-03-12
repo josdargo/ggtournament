@@ -18,6 +18,23 @@ public class Tournament {
     private String rulesUrl;
     private String idStatus;
 
+    public Tournament(Long id, Long creatorId, String title, String description, String category, LocalDateTime createdAt, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime updatedAt, int maxTeams, String mode, String type, String rulesUrl, String idStatus) {
+        this.id = id;
+        this.creatorId = creatorId;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.createdAt = createdAt;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.updatedAt = updatedAt;
+        this.maxTeams = maxTeams;
+        this.mode = mode;
+        this.type = type;
+        this.rulesUrl = rulesUrl;
+        this.idStatus = idStatus;
+    }
+
     public Long getId() {
         return id;
     }

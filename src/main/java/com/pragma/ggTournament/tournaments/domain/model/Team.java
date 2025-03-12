@@ -11,6 +11,16 @@ public class Team {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public Team(Long id, String name, String description, Long creatorId, String logoUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.creatorId = creatorId;
+        this.logoUrl = logoUrl;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Long getId() {
         return id;
     }
