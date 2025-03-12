@@ -1,4 +1,4 @@
-package com.pragma.ggTournament.bd;
+package com.pragma.ggTournament.tournaments.domain.model;
 
 import java.time.LocalDateTime;
 
