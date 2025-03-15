@@ -12,8 +12,9 @@ public class User {
     private String profilePhotoUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Integer accessLevel;
 
-    public User(Long id, String name, String surname, String username, String email, String passwordHash, String profilePhotoUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(Long id, String name, String surname, String username, String email, String passwordHash, String profilePhotoUrl, LocalDateTime createdAt, LocalDateTime updatedAt, Integer accessLevel) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -23,6 +24,7 @@ public class User {
         this.profilePhotoUrl = profilePhotoUrl;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.accessLevel = accessLevel;
     }
 
     public Long getId() {
@@ -95,5 +97,13 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(Integer accessLevel) {
+        this.accessLevel = accessLevel;
     }
 }
