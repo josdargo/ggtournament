@@ -1,11 +1,11 @@
 package com.pragma.ggTournament.tournaments.domain.model;
 
-public class TournamentModerators {
+public class TournamentModerator {
     private Long id;
     private Long tournamentId;
     private Long userId;
 
-    public TournamentModerators(Long id, Long tournamentId, Long userId) {
+    public TournamentModerator(Long id, Long tournamentId, Long userId) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.userId = userId;
