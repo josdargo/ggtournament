@@ -9,4 +9,5 @@ public interface IUserPersistencePort {
     void updateUser(User user);
     List<User> findAll();
     User findById(Long id);
+    User findByUsername(String username);
 }
