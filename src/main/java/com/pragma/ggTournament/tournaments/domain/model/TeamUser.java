@@ -4,7 +4,7 @@ public class TeamUser {
     private Long id;
     private Long teamId;
     private Long userId;
-    private String role;
+    private String role;//"player","ex-player","trainer","staff"
 
     public TeamUser(Long id, Long teamId, Long userId, String role) {
         this.id = id;

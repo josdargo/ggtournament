@@ -7,6 +7,7 @@ import java.util.List;
 public interface IMatchServicePort {
     List<Match> findByTournamentId(Long idTournament);
     List<Match> findAll();
+    Match findById(Long id);
     Long createMatch(Match match);
     void updateMatch(Match match);
 }
