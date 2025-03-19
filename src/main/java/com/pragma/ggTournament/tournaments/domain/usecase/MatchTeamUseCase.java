@@ -16,8 +16,8 @@ public class MatchTeamUseCase implements IMatchTeamServicePort {
     }
 
     @Override
-    public Long createMatchTeam(MatchTeam matchTeam) {
-        return matchTeamPersistencePort.createMatchTeam(matchTeam);
+    public void createMatchTeam(MatchTeam matchTeam) {
+        matchTeamPersistencePort.createMatchTeam(matchTeam);
     }
 
     @Override
