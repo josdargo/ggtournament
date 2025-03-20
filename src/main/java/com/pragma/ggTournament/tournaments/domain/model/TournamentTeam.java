@@ -4,13 +4,13 @@ public class TournamentTeam {
     private Long id;
     private Long tournamentId;
     private Long teamId;
-    private Long idStatus;
+    private String teamState;
 
-    public TournamentTeam(Long id, Long tournamentId, Long teamId, Long idStatus) {
+    public TournamentTeam(Long id, Long tournamentId, Long teamId, String teamState) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.teamId = teamId;
-        this.idStatus = idStatus;
+        this.teamState = teamState;
     }
 
     public Long getId() {
@@ -37,11 +37,11 @@ public class TournamentTeam {
         this.teamId = teamId;
     }
 
-    public Long getIdStatus() {
-        return idStatus;
+    public String getTeamState() {
+        return teamState;
     }
 
-    public void setIdStatus(Long idStatus) {
-        this.idStatus = idStatus;
+    public void setTeamState(String teamState) {
+        this.teamState = teamState;
     }
 }

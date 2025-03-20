@@ -20,5 +20,5 @@ public class TournamentRequest {
     private String mode;
     private String type;
     private String rulesUrl;
-    private Long idStatus;
+    private String tournamentState;
 }

@@ -19,7 +19,6 @@ public class TournamentResponse {
     private String mode;
     private String type;
     private String rulesUrl;
-    private String status;
-    private String statusDescription;
+    private String tournamentState;
     private List<UserDto> lstModerators;
 }

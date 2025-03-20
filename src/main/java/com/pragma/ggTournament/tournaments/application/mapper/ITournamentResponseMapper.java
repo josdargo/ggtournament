@@ -1,7 +1,6 @@
 package com.pragma.ggTournament.tournaments.application.mapper;
 
 import com.pragma.ggTournament.tournaments.application.dto.TournamentResponse;
-import com.pragma.ggTournament.tournaments.domain.model.State;
 import com.pragma.ggTournament.tournaments.domain.model.Tournament;
 import com.pragma.ggTournament.tournaments.domain.model.User;
 import org.mapstruct.Mapper;
@@ -19,7 +18,7 @@ public interface ITournamentResponseMapper {
     IUserDtoMapper INSTANCE_USER = Mappers.getMapper(IUserDtoMapper.class);
 
 
-    default List<TournamentResponse> toResponse(List<Tournament> tournaments, List<User> users, List<State> states){
+    default List<TournamentResponse> toResponse(List<Tournament> tournaments, List<User> users){
         return tournaments.stream()
                 .map(tournament -> {
                     TournamentResponse response = new TournamentResponse();
@@ -37,16 +36,7 @@ public interface ITournamentResponseMapper {
                     response.setMode(tournament.getMode());
                     response.setType(tournament.getType());
                     response.setRulesUrl(tournament.getRulesUrl());
-                    response.setStatus(
-                            Objects.requireNonNull(states.stream().filter(state ->
-                                    state.getId().equals(tournament.getStatusId()))
-                                    .findFirst().orElse(null)).getState()
-                    );
-                    response.setStatusDescription(
-                            Objects.requireNonNull(states.stream().filter(state ->
-                                            state.getId().equals(tournament.getStatusId()))
-                                    .findFirst().orElse(null)).getDescription()
-                    );
+                    response.setTournamentState(tournament.getTournamentState());
                     //response.setLstModerators()...
                     return response;
                 }).toList();

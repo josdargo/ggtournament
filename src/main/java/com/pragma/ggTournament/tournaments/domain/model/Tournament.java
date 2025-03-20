@@ -16,9 +16,9 @@ public class Tournament {
     private String mode;
     private String type;
     private String rulesUrl;
-    private Long statusId;
+    private String tournamentState;
 
-    public Tournament(Long id, Long creatorId, String title, String description, String category, LocalDateTime createdAt, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime updatedAt, int maxTeams, String mode, String type, String rulesUrl, Long statusId) {
+    public Tournament(Long id, Long creatorId, String title, String description, String category, LocalDateTime createdAt, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime updatedAt, int maxTeams, String mode, String type, String rulesUrl, String tournamentState) {
         this.id = id;
         this.creatorId = creatorId;
         this.title = title;
@@ -32,7 +32,7 @@ public class Tournament {
         this.mode = mode;
         this.type = type;
         this.rulesUrl = rulesUrl;
-        this.statusId = statusId;
+        this.tournamentState = tournamentState;
     }
 
     public Long getId() {
@@ -139,11 +139,11 @@ public class Tournament {
         this.rulesUrl = rulesUrl;
     }
 
-    public Long getStatusId() {
-        return statusId;
+    public String getTournamentState() {
+        return tournamentState;
     }
 
-    public void setStatusId(Long statusId) {
-        this.statusId = statusId;
+    public void setTournamentState(String tournamentState) {
+        this.tournamentState = tournamentState;
     }
 }

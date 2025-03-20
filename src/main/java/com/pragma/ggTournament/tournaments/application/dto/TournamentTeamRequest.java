@@ -8,5 +8,5 @@ import lombok.Setter;
 public class TournamentTeamRequest {
     private Long tournamentId;
     private Long teamId;
-    private Long idStatus;
+    private String teamState;
 }
