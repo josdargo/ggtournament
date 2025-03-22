@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ggtournament?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: josdargo
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+appDescription: "GG Tournament"
+appVersion: "1.0.0"

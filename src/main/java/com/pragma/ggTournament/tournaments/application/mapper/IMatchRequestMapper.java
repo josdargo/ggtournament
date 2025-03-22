@@ -13,5 +13,5 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IMatchRequestMapper {
     Match toMatch(MatchRequest matchRequest);
-    List<MatchTeam> toListMatchTeam(MatchRequest matchRequest);
+    //List<MatchTeam> toListMatchTeam(MatchRequest matchRequest);
 }
