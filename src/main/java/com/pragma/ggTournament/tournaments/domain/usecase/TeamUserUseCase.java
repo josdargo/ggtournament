@@ -1,36 +1,40 @@
 package com.pragma.ggTournament.tournaments.domain.usecase;
 
 import com.pragma.ggTournament.tournaments.domain.api.ITeamServicePort;
+import com.pragma.ggTournament.tournaments.domain.api.ITeamUserServicePort;
 import com.pragma.ggTournament.tournaments.domain.model.Team;
+import com.pragma.ggTournament.tournaments.domain.model.TeamUser;
 import com.pragma.ggTournament.tournaments.domain.spi.ITeamPersistencePort;
+import com.pragma.ggTournament.tournaments.domain.spi.ITeamUserPersistencePort;
 
 import java.util.List;
 
-public class TeamUserUseCase implements ITeamServicePort {
+public class TeamUserUseCase implements ITeamUserServicePort {
 
-    private final ITeamPersistencePort teamPersistencePort;
+    private final ITeamUserPersistencePort teamUserPersistencePort;
 
-    public TeamUserUseCase(ITeamPersistencePort teamPersistencePort){
-        this.teamPersistencePort = teamPersistencePort;
+    public TeamUserUseCase(ITeamUserPersistencePort teamUserPersistencePort){
+        this.teamUserPersistencePort = teamUserPersistencePort;
+    }
+
+
+    @Override
+    public Long createTeamUser(TeamUser teamUser) {
+        return teamUserPersistencePort.createTeamUser(teamUser);
     }
 
     @Override
-    public Long createTeam(Team team) {
-        return teamPersistencePort.createTeam(team);
+    public List<TeamUser> findByUserId(Long userId) {
+        return teamUserPersistencePort.findByUserId(userId);
     }
 
     @Override
-    public void updateTeam(Team team) {
-        teamPersistencePort.updateTeam(team);
+    public List<TeamUser> findByTeamId(Long teamId) {
+        return teamUserPersistencePort.findByTeamId(teamId);
     }
 
     @Override
-    public List<Team> findByCreatorId(Long creatorId) {
-        return teamPersistencePort.findByCreatorId(creatorId);
-    }
-
-    @Override
-    public List<Team> findAll() {
-        return teamPersistencePort.findAll();
+    public List<TeamUser> findByRole(String role) {
+        return teamUserPersistencePort.findByRole(role);
     }
 }

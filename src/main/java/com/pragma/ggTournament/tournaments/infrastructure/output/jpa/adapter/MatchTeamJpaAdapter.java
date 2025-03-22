@@ -11,8 +11,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MatchTeamJpaAdapter implements IMatchTeamPersistencePort {
 
-    private final IMatchTeamMapper mapper;
     private final IMatchTeamRepository repository;
+    private final IMatchTeamMapper mapper;
 
     @Override
     public void createMatchTeam(MatchTeam matchTeam) {
