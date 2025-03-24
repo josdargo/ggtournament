@@ -30,7 +30,13 @@ public class TournamentUseCase implements ITournamentServicePort {
     }
 
     @Override
-    public Tournament findById(Long id) {
+    public Tournament getById(Long id) {
         return tournamentPersistencePort.findById(id);
     }
+
+    @Override
+    public List<Tournament> getAllTournaments() {
+        return tournamentPersistencePort.getAllTournaments();
+    }
+
 }

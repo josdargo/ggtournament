@@ -14,8 +14,8 @@ public class MatchUseCase implements IMatchServicePort {
         this.matchPersistencePort = matchPersistencePort;
     }
     @Override
-    public List<Match> findByTournamentId(Long idTournament) {
-        return matchPersistencePort.findByTournamentId(idTournament);
+    public List<Match> getListByTournamentId(Long idTournament) {
+        return matchPersistencePort.getListByTournamentId(idTournament);
     }
 
     @Override

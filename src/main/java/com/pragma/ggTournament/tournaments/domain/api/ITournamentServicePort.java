@@ -8,5 +8,6 @@ public interface ITournamentServicePort {
     Long createTournament(Tournament tournament);
     void updateTournament(Tournament tournament);
     List<Tournament> findByCreatorId(Long creatorId);
-    Tournament findById(Long id);
+    Tournament getById(Long id);
+    List<Tournament> getAllTournaments();
 }

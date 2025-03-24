@@ -1,6 +1,6 @@
 package com.pragma.ggTournament.tournaments.domain.model;
 
-public class TeamUser {
+public class  TeamUser {
     private Long id;
     private Long teamId;
     private Long userId;

@@ -9,4 +9,5 @@ public interface ITournamentPersistencePort {
     void updateTournament(Tournament tournament);
     List<Tournament> findByCreatorId(Long creatorId);
     Tournament findById(Long id);
+    List<Tournament> getAllTournaments();
 }
