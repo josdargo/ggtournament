@@ -7,7 +7,8 @@ import java.util.List;
 public interface ITournamentPersistencePort {
     Long createTournament(Tournament tournament);
     void updateTournament(Tournament tournament);
-    List<Tournament> findByCreatorId(Long creatorId);
-    Tournament findById(Long id);
-    List<Tournament> getAllTournaments();
+    List<Tournament> getListTournamentByCreatorId(Long creatorId);
+    Tournament getById(Long id);
+    List<Tournament> getListTournamentByState(String tournamentState);
+
 }

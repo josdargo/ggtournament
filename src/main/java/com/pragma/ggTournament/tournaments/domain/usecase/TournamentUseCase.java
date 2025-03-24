@@ -25,18 +25,18 @@ public class TournamentUseCase implements ITournamentServicePort {
     }
 
     @Override
-    public List<Tournament> findByCreatorId(Long creatorId) {
-        return tournamentPersistencePort.findByCreatorId(creatorId);
+    public List<Tournament> getListTournamentByCreatorId(Long creatorId) {
+        return tournamentPersistencePort.getListTournamentByCreatorId(creatorId);
     }
 
     @Override
     public Tournament getById(Long id) {
-        return tournamentPersistencePort.findById(id);
+        return tournamentPersistencePort.getById(id);
     }
 
     @Override
-    public List<Tournament> getAllTournaments() {
-        return tournamentPersistencePort.getAllTournaments();
+    public List<Tournament> getListTournamentByState(String tournamentState) {
+        return tournamentPersistencePort.getListTournamentByState(tournamentState);
     }
 
 }

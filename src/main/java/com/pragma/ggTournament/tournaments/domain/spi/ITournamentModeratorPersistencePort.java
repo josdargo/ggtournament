@@ -9,4 +9,5 @@ public interface ITournamentModeratorPersistencePort {
     List<TournamentModerator> findByTournamentId(Long tournamentId);
     TournamentModerator findByUserId(Long userId);
     void deleteModeratorByUserId(Long userId);
+    List<TournamentModerator> getListByTournamentIds(List<Long> tournamentIds);
 }

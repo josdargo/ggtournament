@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface IMatchTeamPersistencePort {
     void createMatchTeam(MatchTeam matchTeam);
-    List<MatchTeam> findByMatchId(Long matchId);
-    List<MatchTeam> findByTeamId(Long teamId);
+    List<MatchTeam> getListByMatchId(Long matchId);
+    List<MatchTeam> getListByTeamId(Long teamId);
+    List<MatchTeam> getAll();
+
+    List<MatchTeam> getListByMatchIds(List<Long> matchIds);
 }

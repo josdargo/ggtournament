@@ -1,10 +1,7 @@
 package com.pragma.ggTournament.tournaments.domain.usecase;
 
-import com.pragma.ggTournament.tournaments.domain.api.ITeamServicePort;
 import com.pragma.ggTournament.tournaments.domain.api.ITeamUserServicePort;
-import com.pragma.ggTournament.tournaments.domain.model.Team;
 import com.pragma.ggTournament.tournaments.domain.model.TeamUser;
-import com.pragma.ggTournament.tournaments.domain.spi.ITeamPersistencePort;
 import com.pragma.ggTournament.tournaments.domain.spi.ITeamUserPersistencePort;
 
 import java.util.List;
@@ -24,17 +21,22 @@ public class TeamUserUseCase implements ITeamUserServicePort {
     }
 
     @Override
-    public List<TeamUser> findByUserId(Long userId) {
-        return teamUserPersistencePort.findByUserId(userId);
+    public List<TeamUser> getByUserId(Long userId) {
+        return teamUserPersistencePort.getByUserId(userId);
     }
 
     @Override
-    public List<TeamUser> findByTeamId(Long teamId) {
-        return teamUserPersistencePort.findByTeamId(teamId);
+    public List<TeamUser> getByTeamId(Long teamId) {
+        return teamUserPersistencePort.getByTeamId(teamId);
     }
 
     @Override
-    public List<TeamUser> findByRole(String role) {
-        return teamUserPersistencePort.findByRole(role);
+    public List<TeamUser> getByRole(String role) {
+        return teamUserPersistencePort.getByRole(role);
+    }
+
+    @Override
+    public List<TeamUser> getListByTeamIds(List<Long> teamIds) {
+        return teamUserPersistencePort.getListByTeamIds(teamIds);
     }
 }

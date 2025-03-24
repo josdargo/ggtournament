@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface ITeamUserPersistencePort {
     Long createTeamUser(TeamUser teamUser);
-    List<TeamUser> findByUserId(Long userId);
-    List<TeamUser> findByTeamId(Long teamId);
-    List<TeamUser> findByRole(String role);
+    List<TeamUser> getByUserId(Long userId);
+    List<TeamUser> getByTeamId(Long teamId);
+    List<TeamUser> getByRole(String role);
+    List<TeamUser> getListByTeamIds(List<Long> teamIds);
 }

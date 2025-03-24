@@ -7,7 +7,8 @@ import java.util.List;
 public interface IUserServicePort {
     Long createUser(User user);
     void updateUser(User user);
-    List<User> findAll();
-    User findById(Long id);
-    User findByUsername(String username);
+    List<User> getAll();
+    User getById(Long id);
+    User getByUsername(String username);
+    List<User> getListByIds(List<Long> userIds);
 }

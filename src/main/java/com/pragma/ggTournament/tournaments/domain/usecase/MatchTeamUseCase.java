@@ -21,12 +21,22 @@ public class MatchTeamUseCase implements IMatchTeamServicePort {
     }
 
     @Override
-    public List<MatchTeam> findByMatchId(Long matchId) {
-        return matchTeamPersistencePort.findByMatchId(matchId);
+    public List<MatchTeam> getListByMatchId(Long matchId) {
+        return matchTeamPersistencePort.getListByMatchId(matchId);
     }
 
     @Override
-    public List<MatchTeam> findByTeamId(Long teamId) {
-        return matchTeamPersistencePort.findByTeamId(teamId);
+    public List<MatchTeam> getListByTeamId(Long teamId) {
+        return matchTeamPersistencePort.getListByTeamId(teamId);
+    }
+
+    @Override
+    public List<MatchTeam> getAll() {
+        return matchTeamPersistencePort.getAll();
+    }
+
+    @Override
+    public List<MatchTeam> getListByMatchIds(List<Long> matchIds) {
+        return matchTeamPersistencePort.getListByMatchIds(matchIds);
     }
 }

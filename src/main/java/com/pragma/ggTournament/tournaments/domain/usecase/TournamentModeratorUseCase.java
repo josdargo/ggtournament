@@ -33,4 +33,9 @@ public class TournamentModeratorUseCase implements ITournamentModeratorServicePo
     public void deleteModeratorByUserId(Long userId) {
         tournamentModeratorPersistencePort.deleteModeratorByUserId(userId);
     }
+
+    @Override
+    public List<TournamentModerator> getListByTournamentIds(List<Long> tournamentIds) {
+        return tournamentModeratorPersistencePort.getListByTournamentIds(tournamentIds);
+    }
 }

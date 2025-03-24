@@ -7,6 +7,9 @@ import java.util.List;
 public interface ITeamServicePort {
     Long createTeam(Team team);
     void updateTeam(Team team);
-    List<Team> findByCreatorId(Long creatorId);
-    List<Team> findAll();
+    List<Team> getByCreatorId(Long creatorId);
+    List<Team> getAll();
+    Team getById(Long id);
+
+    List<Team> getListByIds(List<Long> teamIds);
 }

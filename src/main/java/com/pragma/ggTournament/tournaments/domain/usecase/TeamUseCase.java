@@ -25,12 +25,22 @@ public class TeamUseCase implements ITeamServicePort {
     }
 
     @Override
-    public List<Team> findByCreatorId(Long creatorId) {
-        return teamPersistencePort.findByCreatorId(creatorId);
+    public List<Team> getByCreatorId(Long creatorId) {
+        return teamPersistencePort.getByCreatorId(creatorId);
     }
 
     @Override
-    public List<Team> findAll() {
-        return teamPersistencePort.findAll();
+    public List<Team> getAll() {
+        return teamPersistencePort.getAll();
+    }
+
+    @Override
+    public Team getById(Long id) {
+        return teamPersistencePort.getById(id);
+    }
+
+    @Override
+    public List<Team> getListByIds(List<Long> teamIds) {
+        return teamPersistencePort.getListByIds(teamIds);
     }
 }

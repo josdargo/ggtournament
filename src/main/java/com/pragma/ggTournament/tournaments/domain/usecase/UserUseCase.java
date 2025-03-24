@@ -25,17 +25,22 @@ public class UserUseCase implements IUserServicePort {
     }
 
     @Override
-    public List<User> findAll() {
-        return userPersistencePort.findAll();
+    public List<User> getAll() {
+        return userPersistencePort.getAll();
     }
 
     @Override
-    public User findById(Long id) {
-        return userPersistencePort.findById(id);
+    public User getById(Long id) {
+        return userPersistencePort.getById(id);
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userPersistencePort.findByUsername(username);
+    public User getByUsername(String username) {
+        return userPersistencePort.getByUsername(username);
+    }
+
+    @Override
+    public List<User> getListByIds(List<Long> userIds) {
+        return userPersistencePort.getListByIds(userIds);
     }
 }
