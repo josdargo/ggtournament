@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
-public interface ICategoryMapper {
+public interface ICategoryEntityMapper {
     Category toCategory(CategoryEntity categoryEntity);
     List<Category> toListCategory(List<CategoryEntity> categoryEntityList);
 }

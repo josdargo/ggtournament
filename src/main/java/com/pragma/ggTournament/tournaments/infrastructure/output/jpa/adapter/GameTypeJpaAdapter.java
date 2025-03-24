@@ -2,7 +2,7 @@ package com.pragma.ggTournament.tournaments.infrastructure.output.jpa.adapter;
 
 import com.pragma.ggTournament.tournaments.domain.model.GameType;
 import com.pragma.ggTournament.tournaments.domain.spi.IGameTypePersistencePort;
-import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.IGameTypeMapper;
+import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.IGameTypeEntityMapper;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.IGameTypeRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class GameTypeJpaAdapter implements IGameTypePersistencePort {
 
     private final IGameTypeRepository gameTypeRepository;
-    private final IGameTypeMapper gameTypeMapper;
+    private final IGameTypeEntityMapper gameTypeMapper;
 
     @Override
     public GameType getGameTypeById(Long id) {

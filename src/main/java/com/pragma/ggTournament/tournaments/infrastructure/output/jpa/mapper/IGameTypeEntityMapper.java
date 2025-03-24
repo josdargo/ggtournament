@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
-public interface IGameTypeMapper {
+public interface IGameTypeEntityMapper {
     GameType toGameType(GameTypeEntity gameType);
     List<GameType> toListGameType(List<GameTypeEntity> gameTypeEntityList);
 }

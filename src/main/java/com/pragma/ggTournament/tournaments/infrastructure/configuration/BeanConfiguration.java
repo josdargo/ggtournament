@@ -30,9 +30,9 @@ public class BeanConfiguration {
     private final IUserRepository userRepository;
     private final IUserMapper userMapper;
     private final ICategoryRepository categoryRepository;
-    private final ICategoryMapper categoryMapper;
+    private final ICategoryEntityMapper categoryMapper;
     private final IGameTypeRepository gameTypeRepository;
-    private final IGameTypeMapper gameTypeMapper;
+    private final IGameTypeEntityMapper gameTypeMapper;
 
     @Bean
     public IMatchPersistencePort matchPersistencePort(){

@@ -2,7 +2,7 @@ package com.pragma.ggTournament.tournaments.infrastructure.output.jpa.adapter;
 
 import com.pragma.ggTournament.tournaments.domain.model.Category;
 import com.pragma.ggTournament.tournaments.domain.spi.ICategoryPersistencePort;
-import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.ICategoryMapper;
+import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.ICategoryEntityMapper;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class CategoryJpaAdapter implements ICategoryPersistencePort {
 
     private final ICategoryRepository categoryRepository;
-    private final ICategoryMapper categoryMapper;
+    private final ICategoryEntityMapper categoryMapper;
 
     @Override
     public Category getCategoryById(Long id) {
