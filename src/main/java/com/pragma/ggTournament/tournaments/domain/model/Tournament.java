@@ -7,32 +7,28 @@ public class Tournament {
     private Long creatorId;
     private String title;
     private String description;
-    private String category;
-    private LocalDateTime createdAt;
+    private Long categoryId;
+    private Long gameTypeId;
+    private String rulesUrl;
+    private String tournamentState;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private int maxTeams;
-    private String mode;
-    private String type;
-    private String rulesUrl;
-    private String idStatus;
 
-    public Tournament(Long id, Long creatorId, String title, String description, String category, LocalDateTime createdAt, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime updatedAt, int maxTeams, String mode, String type, String rulesUrl, String idStatus) {
+    public Tournament(Long id, Long creatorId, String title, String description, Long categoryId, Long gameTypeId, String rulesUrl, String tournamentState, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.creatorId = creatorId;
         this.title = title;
         this.description = description;
-        this.category = category;
-        this.createdAt = createdAt;
+        this.categoryId = categoryId;
+        this.gameTypeId = gameTypeId;
+        this.rulesUrl = rulesUrl;
+        this.tournamentState = tournamentState;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.maxTeams = maxTeams;
-        this.mode = mode;
-        this.type = type;
-        this.rulesUrl = rulesUrl;
-        this.idStatus = idStatus;
     }
 
     public Long getId() {
@@ -67,20 +63,36 @@ public class Tournament {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public Long getGameTypeId() {
+        return gameTypeId;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setGameTypeId(Long gameTypeId) {
+        this.gameTypeId = gameTypeId;
+    }
+
+    public String getRulesUrl() {
+        return rulesUrl;
+    }
+
+    public void setRulesUrl(String rulesUrl) {
+        this.rulesUrl = rulesUrl;
+    }
+
+    public String getTournamentState() {
+        return tournamentState;
+    }
+
+    public void setTournamentState(String tournamentState) {
+        this.tournamentState = tournamentState;
     }
 
     public LocalDateTime getStartDate() {
@@ -99,51 +111,19 @@ public class Tournament {
         this.endDate = endDate;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public int getMaxTeams() {
-        return maxTeams;
-    }
-
-    public void setMaxTeams(int maxTeams) {
-        this.maxTeams = maxTeams;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getRulesUrl() {
-        return rulesUrl;
-    }
-
-    public void setRulesUrl(String rulesUrl) {
-        this.rulesUrl = rulesUrl;
-    }
-
-    public String getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(String idStatus) {
-        this.idStatus = idStatus;
     }
 }

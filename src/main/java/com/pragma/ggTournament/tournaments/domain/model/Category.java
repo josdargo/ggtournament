@@ -1,14 +1,14 @@
 package com.pragma.ggTournament.tournaments.domain.model;
 
-public class State {
+public class Category {
     private Long id;
-    private String state;
     private String description;
+    private String alias;
 
-    public State(Long id, String state, String description) {
+    public Category(Long id, String description, String alias) {
         this.id = id;
-        this.state = state;
         this.description = description;
+        this.alias = alias;
     }
 
     public Long getId() {
@@ -19,19 +19,19 @@ public class State {
         this.id = id;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 }

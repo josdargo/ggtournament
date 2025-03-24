@@ -9,14 +9,16 @@ public class Match {
     private String matchState;
     private LocalDateTime matchDate;
     private Long winnerTeamId;
+    private Character groupStageName;
 
-    public Match(Long id, Long tournamentId, String stage, String matchState, LocalDateTime matchDate, Long winnerTeamId) {
+    public Match(Long id, Long tournamentId, String stage, String matchState, LocalDateTime matchDate, Long winnerTeamId, Character groupStageName) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.stage = stage;
         this.matchState = matchState;
         this.matchDate = matchDate;
         this.winnerTeamId = winnerTeamId;
+        this.groupStageName = groupStageName;
     }
 
     public Long getId() {
@@ -65,5 +67,13 @@ public class Match {
 
     public void setWinnerTeamId(Long winnerTeamId) {
         this.winnerTeamId = winnerTeamId;
+    }
+
+    public Character getGroupStageName() {
+        return groupStageName;
+    }
+
+    public void setGroupStageName(Character groupStageName) {
+        this.groupStageName = groupStageName;
     }
 }
