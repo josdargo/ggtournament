@@ -12,13 +12,11 @@ public class TournamentResponse {
     private String creatorUserName;
     private String title;
     private String description;
-    private String category;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private int maxTeams;
-    private String mode;
-    private String type;
+    private CategoryDto category;
+    private GameTypeDto gameType;
     private String rulesUrl;
     private String tournamentState;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private List<UserDto> lstModerators;
 }

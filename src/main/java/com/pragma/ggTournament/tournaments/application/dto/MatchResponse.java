@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +13,8 @@ public class MatchResponse {
     private String stage;
     private String matchState;
     private LocalDateTime matchDate;
-    private Long winnerTeamId;
+    private String winnerTeamName;
+    private String winnerTeamUrlPhoto;
     private Character groupStageName;
+    private List<MatchTeamDetailDto> listTeams;
 }
