@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface ITournamentRepository extends JpaRepository<TournamentEntity,Long> {
     Optional<List<TournamentEntity>> findByCreatorId(Long creatorId);
+    Optional<List<TournamentEntity>> findByTournamentState(String tournamentState);
 }

@@ -25,17 +25,22 @@ public class UserJpaAdapter implements IUserPersistencePort {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         return mapper.toListUser(repository.findAll());
     }
 
     @Override
-    public User findById(Long id) {
+    public User getById(Long id) {
         return mapper.toUser(repository.findById(id).orElseThrow());
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User getByUsername(String username) {
         return mapper.toUser(repository.findByUsername(username).orElseThrow());
+    }
+
+    @Override
+    public List<User> getListByIds(List<Long> userIds) {
+        return mapper.toListUser(repository.findAllById(userIds));
     }
 }

@@ -13,5 +13,6 @@ import java.util.List;
 public interface ITeamMapper {
     List<Team> toListTeam(List<TeamEntity> teamEntityList);
     TeamEntity toEntity(Team team);
+    Team toTeam(TeamEntity teamEntity);
 
 }

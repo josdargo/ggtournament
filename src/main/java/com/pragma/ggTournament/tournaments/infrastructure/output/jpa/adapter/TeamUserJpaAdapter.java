@@ -21,18 +21,23 @@ public class TeamUserJpaAdapter implements ITeamUserPersistencePort {
     }
 
     @Override
-    public List<TeamUser> findByUserId(Long userId) {
+    public List<TeamUser> getByUserId(Long userId) {
         return mapper.toListTeamUser(repository.findByUserId(userId).orElseThrow());
     }
 
     @Override
-    public List<TeamUser> findByTeamId(Long teamId) {
+    public List<TeamUser> getByTeamId(Long teamId) {
         return mapper.toListTeamUser(repository.findByTeamId(teamId).orElseThrow());
     }
 
     @Override
-    public List<TeamUser> findByRole(String role) {
+    public List<TeamUser> getByRole(String role) {
         return mapper.toListTeamUser(repository.findByRole(role).orElseThrow());
 
+    }
+
+    @Override
+    public List<TeamUser> getListByTeamIds(List<Long> teamIds) {
+        return mapper.toListTeamUser(repository.findByTeamIdIn(teamIds).orElseThrow());
     }
 }

@@ -20,12 +20,22 @@ public class MatchTeamJpaAdapter implements IMatchTeamPersistencePort {
     }
 
     @Override
-    public List<MatchTeam> findByMatchId(Long matchId) {
-        return mapper.toListMatchTeam(repository.findByMatchId(matchId));
+    public List<MatchTeam> getListByMatchId(Long matchId) {
+        return mapper.toListMatchTeam(repository.findByMatchId(matchId).orElseThrow(() -> new RuntimeException("Error")));
     }
 
     @Override
-    public List<MatchTeam> findByTeamId(Long teamId) {
-        return mapper.toListMatchTeam(repository.findByTeamId(teamId));
+    public List<MatchTeam> getListByTeamId(Long teamId) {
+        return mapper.toListMatchTeam(repository.findByTeamId(teamId).orElseThrow(() -> new RuntimeException("Error")));
+    }
+
+    @Override
+    public List<MatchTeam> getAll() {
+        return mapper.toListMatchTeam(repository.findAll());
+    }
+
+    @Override
+    public List<MatchTeam> getListByMatchIds(List<Long> matchIds) {
+        return mapper.toListMatchTeam(repository.findByMatchIdIn(matchIds).orElseThrow(() -> new RuntimeException("Error")));
     }
 }

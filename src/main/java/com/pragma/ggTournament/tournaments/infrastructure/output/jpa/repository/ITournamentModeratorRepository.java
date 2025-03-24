@@ -8,4 +8,7 @@ import java.util.Optional;
 
 public interface ITournamentModeratorRepository extends JpaRepository<TournamentModeratorEntity, Long> {
     Optional<List<TournamentModeratorEntity>> findByTournamentId(Long tournamentId);
+
+    Optional<List<TournamentModeratorEntity>> findByTournamentIdIn(List<Long> tournamentIds);
+
 }

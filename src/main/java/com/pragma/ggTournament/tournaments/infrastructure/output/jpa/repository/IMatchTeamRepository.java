@@ -4,8 +4,10 @@ import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.entity.Matc
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IMatchTeamRepository extends JpaRepository<MatchTeamEntity, Long> {
-    List<MatchTeamEntity> findByMatchId(Long matchId);
-    List<MatchTeamEntity> findByTeamId(Long teamId);
+    Optional<List<MatchTeamEntity>> findByMatchId(Long matchId);
+    Optional<List<MatchTeamEntity>> findByTeamId(Long teamId);
+    Optional<List<MatchTeamEntity>> findByMatchIdIn(List<Long> matchIds);
 }

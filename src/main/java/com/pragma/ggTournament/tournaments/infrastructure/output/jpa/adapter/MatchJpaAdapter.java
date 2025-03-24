@@ -15,7 +15,7 @@ public class MatchJpaAdapter implements IMatchPersistencePort {
     private final IMatchMapper matchMapper;
 
     @Override
-    public List<Match> findByTournamentId(Long idTournament) {
+    public List<Match> getListByTournamentId(Long idTournament) {
         return matchMapper.toListMatch(matchRepository.findByTournamentId(idTournament).orElseThrow(() -> new RuntimeException("Error")));
     }
 

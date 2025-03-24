@@ -1,0 +1,220 @@
+openapi: 3.0.3
+info:
+  title: Swagger GG Tournament - OpenAPI 3.0
+  description: |-
+    Proyecto destinado a orquestar tornetos de E-Sports de varios tipos de
+    juego independientemente de la modalidad que se requiera hacer el 
+    torneo.
+  contact:
+    email: dario.gonzalezc@pragma.com.co
+  version: 1.0.0
+tags:
+  - name: tournaments
+    description: Tournament Management API
+  - name: teams
+    description: Team Management API1
+  - name: matches
+    description: Match Management API
+  - name: admin
+    description: Match Management API
+
+paths:
+  /tournaments:
+    get:
+      summary: "Get all tournaments"
+      tags: [tournaments]
+      responses:
+        "200":
+          description: "List of tournaments"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tournament"
+
+    post:
+      summary: "Create a new tournament"
+      tags: [tournaments]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tournament"
+      responses:
+        "201":
+          description: "Tournament created"
+
+  /tournaments/{id}:
+    get:
+      summary: "Get tournament by ID"
+      tags: [tournaments]
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "Tournament details"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tournament"
+
+    put:
+      summary: "Update a tournament"
+      tags: [tournaments]
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tournament"
+      responses:
+        "200":
+          description: "Tournament updated"
+
+    delete:
+      summary: "Delete a tournament"
+      tags: [tournaments]
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        "204":
+          description: "Tournament deleted"
+
+  /teams:
+    get:
+      summary: "Get all teams"
+      tags: [teams]
+      responses:
+        "200":
+          description: "List of teams"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Team"
+
+    post:
+      summary: "Create a team"
+      tags: [teams]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Team"
+      responses:
+        "201":
+          description: "Team created"
+
+  /matches:
+    get:
+      summary: "Get all matches"
+      tags: [matches]
+      responses:
+        "200":
+          description: "List of matches"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Match"
+
+    post:
+      summary: "Create a match"
+      tags: [matches]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Match"
+      responses:
+        "201":
+          description: "Match created"
+
+components:
+  schemas:
+    Tournament:
+      type: object
+      properties:
+        id:
+          type: integer
+        creatorId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        maxTeams:
+          type: integer
+        mode:
+          type: string
+        type:
+          type: string
+        rulesUrl:
+          type: string
+        idStatus:
+          type: string
+
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        creatorId:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        logoUrl:
+          type: string
+
+    Match:
+      type: object
+      properties:
+        id:
+          type: integer
+        tournamentId:
+          type: integer
+        stage:
+          type: string
+        matchState:
+          type: string
+        matchDate:
+          type: string
+          format: date-time
+        winnerTeamId:
+          type: integer

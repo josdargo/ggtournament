@@ -11,5 +11,6 @@ public interface ITeamUserRepository extends JpaRepository<TeamUserEntity, Long>
     Optional<List<TeamUserEntity>> findByUserId(Long userId);
     Optional<List<TeamUserEntity>> findByTeamId(Long teamId);
     Optional<List<TeamUserEntity>> findByRole(String role);
+    Optional<List<TeamUserEntity>> findByTeamIdIn(List<Long> teamIds);
 
 }

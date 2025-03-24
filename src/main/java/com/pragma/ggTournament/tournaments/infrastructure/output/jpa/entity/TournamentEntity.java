@@ -24,24 +24,23 @@ public class TournamentEntity {
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false)
-    private String category;
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
-    @Column(name = "start_date", nullable = false)
-    private LocalDateTime startDate;
-    @Column(name = "end_date", nullable = false)
-    private LocalDateTime endDate;
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
-    @Column(name = "max_teams", nullable = false)
-    private int maxTeams;
-    @Column(nullable = false)
-    private String mode;
-    @Column(nullable = false)
-    private String type;
+    @Column(name = "category_id", nullable = false)
+    private Long categoryId;
+    @Column(name = "game_type_id", nullable = false)
+    private Long gameTypeId;
     @Column(name = "rules_url", nullable = false)
     private String rulesUrl;
     @Column(name = "tournament_state", nullable = false)
     private String tournamentState;
+    @Column(name = "start_date", nullable = false)
+    private LocalDateTime startDate;
+    @Column(name = "end_date", nullable = false)
+    private LocalDateTime endDate;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+
+
 }

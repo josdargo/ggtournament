@@ -6,6 +6,8 @@ import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.ITou
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.ITournamentTeamRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class TournamentTeamJpaAdapter implements ITournamentTeamPersistencePort {
 
@@ -20,5 +22,10 @@ public class TournamentTeamJpaAdapter implements ITournamentTeamPersistencePort 
     @Override
     public void updateTournamentTeam(TournamentTeam tournamentTeam) {
         repository.save(mapper.toEntity(tournamentTeam));
+    }
+
+    @Override
+    public List<TournamentTeam> getListTeamByTournamentId(Long tournamentId) {
+        return mapper.toListTournamentTeam(repository.findByTournamentId(tournamentId).orElseThrow());
     }
 }

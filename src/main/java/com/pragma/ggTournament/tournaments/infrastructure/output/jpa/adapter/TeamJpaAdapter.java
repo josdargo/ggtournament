@@ -23,12 +23,22 @@ public class TeamJpaAdapter implements ITeamPersistencePort {
     }
 
     @Override
-    public List<Team> findByCreatorId(Long creatorId) {
+    public List<Team> getByCreatorId(Long creatorId) {
         return mapper.toListTeam(repository.findByCreatorId(creatorId).orElseThrow(() -> new RuntimeException("Error")));
     }
 
     @Override
-    public List<Team> findAll() {
+    public List<Team> getAll() {
         return mapper.toListTeam(repository.findAll());
+    }
+
+    @Override
+    public Team getById(Long id) {
+        return mapper.toTeam(repository.findById(id).orElseThrow(()->new RuntimeException("Error")));
+    }
+
+    @Override
+    public List<Team> getListByIds(List<Long> teamIds) {
+        return mapper.toListTeam(repository.findAllById(teamIds));
     }
 }

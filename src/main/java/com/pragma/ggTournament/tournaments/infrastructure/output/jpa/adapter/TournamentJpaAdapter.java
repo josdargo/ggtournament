@@ -25,12 +25,17 @@ public class TournamentJpaAdapter implements ITournamentPersistencePort {
     }
 
     @Override
-    public List<Tournament> findByCreatorId(Long creatorId) {
+    public List<Tournament> getListTournamentByCreatorId(Long creatorId) {
         return mapper.toListTournament(repository.findByCreatorId(creatorId).orElseThrow());
     }
 
     @Override
-    public Tournament findById(Long id) {
+    public Tournament getById(Long id) {
         return mapper.toTournament(repository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public List<Tournament> getListTournamentByState(String tournamentState) {
+        return mapper.toListTournament(repository.findByTournamentState(tournamentState).orElseThrow());
     }
 }

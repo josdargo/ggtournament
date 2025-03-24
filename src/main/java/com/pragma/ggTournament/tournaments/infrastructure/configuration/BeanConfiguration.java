@@ -1,7 +1,6 @@
 package com.pragma.ggTournament.tournaments.infrastructure.configuration;
 
 import com.pragma.ggTournament.tournaments.domain.api.*;
-import com.pragma.ggTournament.tournaments.domain.model.Match;
 import com.pragma.ggTournament.tournaments.domain.spi.*;
 import com.pragma.ggTournament.tournaments.domain.usecase.*;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.adapter.*;
@@ -30,6 +29,10 @@ public class BeanConfiguration {
     private final ITournamentTeamMapper tournamentTeamMapper;
     private final IUserRepository userRepository;
     private final IUserMapper userMapper;
+    private final ICategoryRepository categoryRepository;
+    private final ICategoryMapper categoryMapper;
+    private final IGameTypeRepository gameTypeRepository;
+    private final IGameTypeMapper gameTypeMapper;
 
     @Bean
     public IMatchPersistencePort matchPersistencePort(){
@@ -101,5 +104,23 @@ public class BeanConfiguration {
     @Bean
     public IUserServicePort UserServicePort(){
         return new UserUseCase(UserPersistencePort());
+    }
+
+    @Bean
+    public ICategoryPersistencePort CategoryPersistencePort(){
+        return new CategoryJpaAdapter(categoryRepository,categoryMapper);
+    }
+    @Bean
+    public ICategoryServicePort CategoryServicePort(){
+        return new CategoryUseCase(CategoryPersistencePort());
+    }
+
+    @Bean
+    public IGameTypePersistencePort GameTypePersistencePort(){
+        return new GameTypeJpaAdapter(gameTypeRepository,gameTypeMapper);
+    }
+    @Bean
+    public IGameTypeServicePort GameTypeServicePort(){
+        return new GameTypeUseCase(GameTypePersistencePort());
     }
 }

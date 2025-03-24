@@ -33,4 +33,9 @@ public class TournamentModeratorJpaAdapter implements ITournamentModeratorPersis
     public void deleteModeratorByUserId(Long userId) {
 
     }
+
+    @Override
+    public List<TournamentModerator> getListByTournamentIds(List<Long> tournamentIds) {
+        return mapper.toListTournamentModerator(repository.findByTournamentIdIn(tournamentIds).orElseThrow());
+    }
 }
