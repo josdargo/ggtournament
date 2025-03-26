@@ -1,10 +1,10 @@
-package com.pragma.ggTournament.tournaments.domain.api;
+package com.pragma.ggTournament.tournaments.domain.spi;
 
 import com.pragma.ggTournament.tournaments.domain.model.Match;
 
 import java.util.List;
 
-public interface IMatchServicePort {
+public interface IMatchPersistencePort {
     List<Match> getListByTournamentId(Long idTournament);
     List<Match> findAll();
     Match findById(Long id);
