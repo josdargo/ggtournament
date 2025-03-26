@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class TeamController {
     private final ITeamHandler teamHandler;
 
     @PostMapping("/")
-    public ResponseEntity<Long> createTeam(@RequestBody TeamRequest request) {
+    public ResponseEntity<Long> createTeam(@ModelAttribute TeamRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(teamHandler.createTeam(request));
     }
 

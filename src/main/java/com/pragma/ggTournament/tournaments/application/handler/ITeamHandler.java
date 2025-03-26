@@ -4,6 +4,7 @@ import com.pragma.ggTournament.tournaments.application.dto.TeamRequest;
 import com.pragma.ggTournament.tournaments.application.dto.TeamResponse;
 import com.pragma.ggTournament.tournaments.application.dto.TeamUserRequest;
 import com.pragma.ggTournament.tournaments.domain.model.Team;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

@@ -13,6 +13,7 @@ import com.pragma.ggTournament.tournaments.domain.api.IUserServicePort;
 import com.pragma.ggTournament.tournaments.domain.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +36,7 @@ public class TeamHandlerImpl implements ITeamHandler{
 
     @Override
     public Long createTeam(TeamRequest request) {
-        return teamServicePort.createTeam(teamRequestMapper.toTeam(request));
+        return teamServicePort.createTeam(teamRequestMapper.toTeam(request),request.getLogoFile());
     }
 
     @Override
