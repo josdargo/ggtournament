@@ -4,7 +4,9 @@ import com.pragma.ggTournament.tournaments.domain.model.User;
 import com.pragma.ggTournament.tournaments.domain.spi.IUserPersistencePort;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.IUserMapper;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.IUserRepository;
+import com.pragma.ggTournament.tournaments.infrastructure.output.s3.AwsS3Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,9 +15,12 @@ public class UserJpaAdapter implements IUserPersistencePort {
 
     private final IUserRepository repository;
     private final IUserMapper mapper;
+    private final AwsS3Service awsS3Service;
 
     @Override
-    public Long createUser(User user) {
+    public Long createUser(User user, MultipartFile photoFile) {
+        String imageKey = awsS3Service.putObject(photoFile);
+        user.setProfilePhotoUrl(awsS3Service.getUrlImage(imageKey));
         return repository.save(mapper.toEntity(user)).getId();
     }
 

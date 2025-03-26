@@ -20,7 +20,7 @@ public class TournamentController {
     private final ITournamentHandler tournamentHandler;
 
     @PostMapping("/")
-    public ResponseEntity<Long> createTournament(@RequestBody TournamentRequest request) {
+    public ResponseEntity<Long> createTournament(@ModelAttribute  TournamentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(tournamentHandler.createTournament(request));
     }
 

@@ -4,7 +4,9 @@ import com.pragma.ggTournament.tournaments.domain.model.Team;
 import com.pragma.ggTournament.tournaments.domain.spi.ITeamPersistencePort;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.ITeamMapper;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.ITeamRepository;
+import com.pragma.ggTournament.tournaments.infrastructure.output.s3.AwsS3Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -12,8 +14,12 @@ import java.util.List;
 public class TeamJpaAdapter implements ITeamPersistencePort {
     private final ITeamRepository repository;
     private final ITeamMapper mapper;
+    private final AwsS3Service awsS3Service;
+
     @Override
-    public Long createTeam(Team team) {
+    public Long createTeam(Team team, MultipartFile imageFile) {
+        String imageKey = awsS3Service.putObject(imageFile);
+        team.setLogoUrl(awsS3Service.getUrlImage(imageKey));
         return repository.save(mapper.toEntity(team)).getId();
     }
 

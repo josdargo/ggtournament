@@ -12,6 +12,12 @@ spring:
     hibernate:
       ddl-auto: update #create-drop
     show-sql: true
+aws:
+  s3:
+    access-key: ${acces-key-josdargo-1}
+    secret-key: ${secret-key-josdargo-1}
+    region: us-east-2
+    bucket-name: aws-ggtournament
 
 appDescription: "GG Tournament"
 appVersion: "1.0.0"

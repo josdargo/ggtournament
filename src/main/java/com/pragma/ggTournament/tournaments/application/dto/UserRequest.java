@@ -2,6 +2,7 @@ package com.pragma.ggTournament.tournaments.application.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +14,7 @@ public class UserRequest {
     private String username;
     private String email;
     private String passwordHash;
-    private String profilePhotoUrl;
+    private MultipartFile photoFile;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Integer accessLevel;

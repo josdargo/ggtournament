@@ -6,6 +6,7 @@ import com.pragma.ggTournament.tournaments.domain.usecase.*;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.adapter.*;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.*;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.*;
+import com.pragma.ggTournament.tournaments.infrastructure.output.s3.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +34,7 @@ public class BeanConfiguration {
     private final ICategoryEntityMapper categoryMapper;
     private final IGameTypeRepository gameTypeRepository;
     private final IGameTypeEntityMapper gameTypeMapper;
+    private final AwsS3Service awsS3Service;
 
     @Bean
     public IMatchPersistencePort matchPersistencePort(){
@@ -54,7 +56,7 @@ public class BeanConfiguration {
 
     @Bean
     public ITeamPersistencePort teamPersistencePort(){
-        return new TeamJpaAdapter(teamRepository,teamMapper);
+        return new TeamJpaAdapter(teamRepository,teamMapper,awsS3Service);
     }
     @Bean
     public ITeamServicePort teamServicePort(){
@@ -72,7 +74,7 @@ public class BeanConfiguration {
 
     @Bean
     public ITournamentPersistencePort tournamentPersistencePort(){
-        return new TournamentJpaAdapter(tournamentRepository,tournamentMapper);
+        return new TournamentJpaAdapter(tournamentRepository,tournamentMapper,awsS3Service);
     }
     @Bean
     public ITournamentServicePort tournamentServicePort(){
@@ -99,7 +101,7 @@ public class BeanConfiguration {
 
     @Bean
     public IUserPersistencePort UserPersistencePort(){
-        return new UserJpaAdapter(userRepository,userMapper);
+        return new UserJpaAdapter(userRepository,userMapper,awsS3Service);
     }
     @Bean
     public IUserServicePort UserServicePort(){

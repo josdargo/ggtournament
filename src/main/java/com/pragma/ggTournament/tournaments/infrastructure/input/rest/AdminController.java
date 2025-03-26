@@ -15,7 +15,7 @@ public class AdminController {
     private final IAdminHandler adminHandler;
 
     @PostMapping("/users")
-    public ResponseEntity<Long> createUser(@RequestBody UserRequest request) {
+    public ResponseEntity<Long> createUser(@ModelAttribute UserRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(adminHandler.createUser(request));
     }
 

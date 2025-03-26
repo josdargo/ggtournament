@@ -4,7 +4,9 @@ import com.pragma.ggTournament.tournaments.domain.model.Tournament;
 import com.pragma.ggTournament.tournaments.domain.spi.ITournamentPersistencePort;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.mapper.ITournamentMapper;
 import com.pragma.ggTournament.tournaments.infrastructure.output.jpa.repository.ITournamentRepository;
+import com.pragma.ggTournament.tournaments.infrastructure.output.s3.AwsS3Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,9 +15,12 @@ public class TournamentJpaAdapter implements ITournamentPersistencePort {
 
     private final ITournamentRepository repository;
     private final ITournamentMapper mapper;
+    private final AwsS3Service awsS3Service;
 
     @Override
-    public Long createTournament(Tournament tournament) {
+    public Long createTournament(Tournament tournament, MultipartFile file) {
+        String fileKey = awsS3Service.putObject(file);
+        tournament.setRulesUrl(awsS3Service.getUrlImage(fileKey));
         return repository.save(mapper.toEntity(tournament)).getId();
     }
 
