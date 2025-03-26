@@ -2,6 +2,7 @@ package com.pragma.ggTournament.tournaments.application.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +14,7 @@ public class TournamentRequest {
     private String description;
     private Long categoryId;
     private Long gameTypeId;
-    private String rulesUrl;
+    private MultipartFile rulesFile;
     private String tournamentState;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

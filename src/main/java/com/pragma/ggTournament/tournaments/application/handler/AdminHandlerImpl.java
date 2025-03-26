@@ -16,7 +16,7 @@ public class AdminHandlerImpl implements IAdminHandler{
 
     @Override
     public Long createUser(UserRequest request) {
-        return userServicePort.createUser(userRequestMapper.toUser(request));
+        return userServicePort.createUser(userRequestMapper.toUser(request),request.getPhotoFile());
     }
 
     @Override

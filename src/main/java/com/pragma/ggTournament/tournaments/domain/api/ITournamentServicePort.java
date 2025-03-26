@@ -1,11 +1,12 @@
 package com.pragma.ggTournament.tournaments.domain.api;
 
 import com.pragma.ggTournament.tournaments.domain.model.Tournament;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface ITournamentServicePort {
-    Long createTournament(Tournament tournament);
+    Long createTournament(Tournament tournament, MultipartFile file);
     void updateTournament(Tournament tournament);
     List<Tournament> getListTournamentByCreatorId(Long creatorId);
     Tournament getById(Long id);

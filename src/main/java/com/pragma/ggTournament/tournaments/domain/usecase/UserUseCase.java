@@ -3,6 +3,7 @@ package com.pragma.ggTournament.tournaments.domain.usecase;
 import com.pragma.ggTournament.tournaments.domain.api.IUserServicePort;
 import com.pragma.ggTournament.tournaments.domain.model.User;
 import com.pragma.ggTournament.tournaments.domain.spi.IUserPersistencePort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class UserUseCase implements IUserServicePort {
     }
 
     @Override
-    public Long createUser(User user) {
-        return userPersistencePort.createUser(user);
+    public Long createUser(User user, MultipartFile imageFile) {
+        return userPersistencePort.createUser(user,imageFile);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.pragma.ggTournament.tournaments.domain.usecase;
 import com.pragma.ggTournament.tournaments.domain.api.ITournamentServicePort;
 import com.pragma.ggTournament.tournaments.domain.model.Tournament;
 import com.pragma.ggTournament.tournaments.domain.spi.ITournamentPersistencePort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class TournamentUseCase implements ITournamentServicePort {
     }
 
     @Override
-    public Long createTournament(Tournament tournament) {
-        return tournamentPersistencePort.createTournament(tournament);
+    public Long createTournament(Tournament tournament, MultipartFile file) {
+        return tournamentPersistencePort.createTournament(tournament,file);
     }
 
     @Override

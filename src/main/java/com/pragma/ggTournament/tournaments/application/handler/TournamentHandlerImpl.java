@@ -36,7 +36,7 @@ public class TournamentHandlerImpl implements ITournamentHandler{
 
     @Override
     public Long createTournament(TournamentRequest request) {
-        return tournamentServicePort.createTournament(tournamentRequestMapper.toTournament(request));
+        return tournamentServicePort.createTournament(tournamentRequestMapper.toTournament(request), request.getRulesFile());
     }
 
     @Override

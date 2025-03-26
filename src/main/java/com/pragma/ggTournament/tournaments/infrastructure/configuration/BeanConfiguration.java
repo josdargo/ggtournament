@@ -74,7 +74,7 @@ public class BeanConfiguration {
 
     @Bean
     public ITournamentPersistencePort tournamentPersistencePort(){
-        return new TournamentJpaAdapter(tournamentRepository,tournamentMapper);
+        return new TournamentJpaAdapter(tournamentRepository,tournamentMapper,awsS3Service);
     }
     @Bean
     public ITournamentServicePort tournamentServicePort(){
@@ -101,7 +101,7 @@ public class BeanConfiguration {
 
     @Bean
     public IUserPersistencePort UserPersistencePort(){
-        return new UserJpaAdapter(userRepository,userMapper);
+        return new UserJpaAdapter(userRepository,userMapper,awsS3Service);
     }
     @Bean
     public IUserServicePort UserServicePort(){
