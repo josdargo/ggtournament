@@ -1,155 +1,345 @@
-openapi: 3.0.3
+openapi: 3.0.1
 info:
-  title: Swagger GG Tournament - OpenAPI 3.0
-  description: |-
-    Proyecto destinado a orquestar tornetos de E-Sports de varios tipos de
-    juego independientemente de la modalidad que se requiera hacer el 
-    torneo.
-  contact:
-    email: dario.gonzalezc@pragma.com.co
-  version: 1.0.0
-tags:
-  - name: tournaments
-    description: Tournament Management API
-  - name: teams
-    description: Team Management API1
-  - name: matches
-    description: Match Management API
-  - name: admin
-    description: Match Management API
-
+  title: OpenAPI definition
+  version: v1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
 paths:
-  /tournaments:
-    get:
-      summary: "Get all tournaments"
-      tags: [tournaments]
-      responses:
-        "200":
-          description: "List of tournaments"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Tournament"
-
-    post:
-      summary: "Create a new tournament"
-      tags: [tournaments]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Tournament"
-      responses:
-        "201":
-          description: "Tournament created"
-
-  /tournaments/{id}:
-    get:
-      summary: "Get tournament by ID"
-      tags: [tournaments]
-      parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-      responses:
-        "200":
-          description: "Tournament details"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Tournament"
-
+  "/tournaments/":
     put:
-      summary: "Update a tournament"
-      tags: [tournaments]
-      parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
+      tags:
+        - tournament-controller
+      operationId: updateTournament
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Tournament"
+              "$ref": "#/components/schemas/Tournament"
+        required: true
       responses:
-        "200":
-          description: "Tournament updated"
-
-    delete:
-      summary: "Delete a tournament"
-      tags: [tournaments]
-      parameters:
-        - name: "id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
+        '200':
+          description: OK
+    post:
+      tags:
+        - tournament-controller
+      operationId: createTournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TournamentRequest"
       responses:
-        "204":
-          description: "Tournament deleted"
-
-  /teams:
-    get:
-      summary: "Get all teams"
-      tags: [teams]
-      responses:
-        "200":
-          description: "List of teams"
+        '200':
+          description: OK
           content:
-            application/json:
+            "*/*":
+              schema:
+                type: integer
+                format: int64
+  "/teams/":
+    get:
+      tags:
+        - team-controller
+      operationId: getListTeam
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Team"
-
-    post:
-      summary: "Create a team"
-      tags: [teams]
+                  "$ref": "#/components/schemas/Team"
+    put:
+      tags:
+        - team-controller
+      operationId: updateTeam
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Team"
+              "$ref": "#/components/schemas/Team"
+        required: true
       responses:
-        "201":
-          description: "Team created"
-
-  /matches:
-    get:
-      summary: "Get all matches"
-      tags: [matches]
+        '200':
+          description: OK
+    post:
+      tags:
+        - team-controller
+      operationId: createTeam
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TeamRequest"
       responses:
-        "200":
-          description: "List of matches"
+        '200':
+          description: OK
           content:
-            application/json:
+            "*/*":
+              schema:
+                type: integer
+                format: int64
+  "/matches/":
+    put:
+      tags:
+        - match-controller
+      operationId: updateMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Match"
+        required: true
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - match-controller
+      operationId: saveMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MatchRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: integer
+                format: int64
+  "/admin/users":
+    put:
+      tags:
+        - admin-controller
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/User"
+        required: true
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - admin-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserRequest"
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: integer
+                format: int64
+  "/tournaments/add-team":
+    post:
+      tags:
+        - tournament-controller
+      operationId: addTeamToTournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TournamentTeamRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+  "/tournaments/add-moderators":
+    post:
+      tags:
+        - tournament-controller
+      operationId: addModeratorsToTournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TournamentModeratorRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+  "/teams/add-user":
+    post:
+      tags:
+        - team-controller
+      operationId: addUserToTeam
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/TeamUserRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+  "/matches/teams":
+    post:
+      tags:
+        - match-controller
+      operationId: addTeamToMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MatchTeamDto"
+        required: true
+      responses:
+        '200':
+          description: OK
+  "/tournaments/{id}":
+    get:
+      tags:
+        - tournament-controller
+      operationId: getTournamentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Tournament"
+  "/tournaments/{id}/response":
+    get:
+      tags:
+        - tournament-controller
+      operationId: getTournamentResponseById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/TournamentResponse"
+  "/tournaments/state/{tournamentState}":
+    get:
+      tags:
+        - tournament-controller
+      operationId: getListTournamentResponseByState
+      parameters:
+        - name: tournamentState
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Match"
-
-    post:
-      summary: "Create a match"
-      tags: [matches]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Match"
+                  "$ref": "#/components/schemas/TournamentResponse"
+  "/teams/{id}":
+    get:
+      tags:
+        - team-controller
+      operationId: getById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
-        "201":
-          description: "Match created"
-
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Team"
+  "/teams/tournament/{tournamentId}":
+    get:
+      tags:
+        - team-controller
+      operationId: getListTeamByTournamentId
+      parameters:
+        - name: tournamentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/TeamResponse"
+  "/teams/creator/{creatorId}":
+    get:
+      tags:
+        - team-controller
+      operationId: getListTeamByCreatorId
+      parameters:
+        - name: creatorId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Team"
+  "/matches/{tournamentId}":
+    get:
+      tags:
+        - match-controller
+      operationId: getMatchesByTournament
+      parameters:
+        - name: tournamentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/MatchResponse"
 components:
   schemas:
     Tournament:
@@ -157,58 +347,66 @@ components:
       properties:
         id:
           type: integer
+          format: int64
         creatorId:
           type: integer
+          format: int64
         title:
           type: string
         description:
           type: string
-        category:
+        categoryId:
+          type: integer
+          format: int64
+        gameTypeId:
+          type: integer
+          format: int64
+        rulesUrl:
           type: string
-        createdAt:
+        tournamentState:
           type: string
-          format: date-time
         startDate:
           type: string
           format: date-time
         endDate:
           type: string
           format: date-time
-        maxTeams:
-          type: integer
-        mode:
+        createdAt:
           type: string
-        type:
+          format: date-time
+        updatedAt:
           type: string
-        rulesUrl:
-          type: string
-        idStatus:
-          type: string
-
+          format: date-time
     Team:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
         description:
           type: string
         creatorId:
           type: integer
+          format: int64
+        logoUrl:
+          type: string
         createdAt:
           type: string
           format: date-time
-        logoUrl:
+        updatedAt:
           type: string
-
+          format: date-time
     Match:
       type: object
       properties:
         id:
           type: integer
+          format: int64
         tournamentId:
           type: integer
+          format: int64
         stage:
           type: string
         matchState:
@@ -218,3 +416,271 @@ components:
           format: date-time
         winnerTeamId:
           type: integer
+          format: int64
+        groupStageName:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        passwordHash:
+          type: string
+        profilePhotoUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        accessLevel:
+          type: integer
+          format: int32
+    TournamentTeamRequest:
+      type: object
+      properties:
+        tournamentId:
+          type: integer
+          format: int64
+        teamId:
+          type: integer
+          format: int64
+        teamState:
+          type: string
+    TournamentModeratorRequest:
+      type: object
+      properties:
+        tournamentId:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+    TournamentRequest:
+      type: object
+      properties:
+        creatorId:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        categoryId:
+          type: integer
+          format: int64
+        gameTypeId:
+          type: integer
+          format: int64
+        rulesFile:
+          type: string
+          format: binary
+        tournamentState:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    TeamUserRequest:
+      type: object
+      properties:
+        teamId:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        role:
+          type: string
+    TeamRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        creatorId:
+          type: integer
+          format: int64
+        logoFile:
+          type: string
+          format: binary
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    MatchTeamDto:
+      type: object
+      properties:
+        matchId:
+          type: integer
+          format: int64
+        teamId:
+          type: integer
+          format: int64
+        comment:
+          type: string
+    MatchRequest:
+      type: object
+      properties:
+        tournamentId:
+          type: integer
+          format: int64
+        stage:
+          type: string
+        matchState:
+          type: string
+        matchDate:
+          type: string
+          format: date-time
+        winnerTeamId:
+          type: integer
+          format: int64
+        groupStageName:
+          type: string
+        lstMatchTeamDto:
+          type: array
+          items:
+            "$ref": "#/components/schemas/MatchTeamDto"
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        passwordHash:
+          type: string
+        photoFile:
+          type: string
+          format: binary
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        accessLevel:
+          type: integer
+          format: int32
+    CategoryDto:
+      type: object
+      properties:
+        description:
+          type: string
+        alias:
+          type: string
+    GameTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        maxTeams:
+          type: integer
+          format: int32
+    TournamentResponse:
+      type: object
+      properties:
+        creatorUserName:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          "$ref": "#/components/schemas/CategoryDto"
+        gameType:
+          "$ref": "#/components/schemas/GameTypeDto"
+        rulesUrl:
+          type: string
+        tournamentState:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        lstModerators:
+          type: array
+          items:
+            "$ref": "#/components/schemas/UserDto"
+    UserDto:
+      type: object
+      properties:
+        username:
+          type: string
+        profilePhotoUrl:
+          type: string
+        role:
+          type: string
+    TeamResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        creatorUsername:
+          type: string
+        logoUrl:
+          type: string
+        members:
+          type: array
+          items:
+            "$ref": "#/components/schemas/UserDto"
+    MatchResponse:
+      type: object
+      properties:
+        tournamentTitle:
+          type: string
+        stage:
+          type: string
+        matchState:
+          type: string
+        matchDate:
+          type: string
+          format: date-time
+        winnerTeamName:
+          type: string
+        winnerTeamUrlPhoto:
+          type: string
+        groupStageName:
+          type: string
+        listTeams:
+          type: array
+          items:
+            "$ref": "#/components/schemas/MatchTeamDetailDto"
+    MatchTeamDetailDto:
+      type: object
+      properties:
+        nameTeam:
+          type: string
+        logoUrl:
+          type: string
+        comment:
+          type: string
